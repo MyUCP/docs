@@ -14,7 +14,7 @@
 ## Требования к серверу
 
 У MyUCP всего несколько требований к вашему серверу:
-- PHP >= 5.4
+- PHP >= 7.0
 - Mcrypt PHP Extension
 - OpenSSL PHP Extension
 - Mbstring PHP Extension
