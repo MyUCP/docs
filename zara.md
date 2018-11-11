@@ -220,7 +220,7 @@ class ZaraService
 
 class ZaraService
 {
-    public function __construct($viewName)
+    public function __construct(string $viewName)
     {
         Zara::if('language', function ($lang) {
             return Lang::currentLocale() == $lang;

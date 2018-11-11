@@ -21,22 +21,22 @@
 
 class UserController extends Controller
 {
-	public function showProfile($id)
+	public function showProfile()
 	{
-		$this->session->data['user_id'];
-		$this->session->get('user_id');
+		$user_id = session()->data['user_id'];
+		$user_id = session()->get('user_id');
 
-		session("user_id");
+		$user_id = session("user_id");
 	}
 }
 ```
 
-Вторым аргументом вы можете указать новое значение которое будет установленно для данного ключа:
+Вторым аргументом вы можете указать значение которое будет возвращенно если ключа с таким именем не найденно:
 
 ```php
-$this->session->get('user_id', '1');
+session()->get('user_id', '1');
 
-$this->session->get('user_id', function() {
+session()->get('user_id', function() {
 	return 1;
 });
 ```
@@ -44,7 +44,7 @@ $this->session->get('user_id', function() {
 Так можно получить все данные, которые хранятся в сессии:
 
 ```php
-$this->session->all();
+session()->all();
 ```
 
 #### Проверка на существование ключа
@@ -59,27 +59,31 @@ if($this->session->has('users')) {
 
 #### Сохранение данных в сессии
 
+Что бы добавить данные в сессию стоит использовать метод `put` первый аргументов которого есть название ключа сессии и вторым это само значение которое будет сохраненно.
+
 ```php
-$this->session->put('key', 'value');
+session()->put('key', 'value');
 ```
 
 #### Удаление данных из сессии
 
+Для полного удаления данных из сессии стоит использовать метод `forget` котрый удалит данные.
+
 ```php
-$this->session->forget('key');
+session()->forget('key');
 ```
 
-<a name="Одноразовые flash-данные"></a>
+<a name="Одноразовые-flash-данные"></a>
 ### Одноразовые flash-данные
 
 Иногда вам нужно сохранить переменную только для следующего запроса, после выполнения которого она должна быть автоматически удалена. Это нужно, например, для передачи ошибок валидации в форму - при сабмите формы выполняется POST-запрос, после которого обязательно должен идти редирект, и для сохранения текста ошибки используют сессии. Вы можете сделать это методом `flash()`:
 
 ```php
-$this->session->flash('status', 'Task was successful!');
+session()->flash('status', 'Task was successful!');
 ```
 
 Если вам понадобилось передать flash-данные дальше, вы можете сохранить их все для следующего запроса:
 
 ```php
-$this->session->reflash();
+session()->reflash();
 ```

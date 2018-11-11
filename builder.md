@@ -44,13 +44,12 @@
 
 class HomeController extends Controller
 {
-  //Показать список всех пользователей
-  public function index()
-  {
-    $users = Builder::table('users')->get();
-
-    return view('user/index', ['users' => $users]);
-  }
+    public function index()
+    {
+        $users = Builder::table('users')->get();
+        
+        return view('user/index', compact('users'));
+    }
 }
 ```
 
@@ -58,7 +57,7 @@ class HomeController extends Controller
 
 ```php
 foreach ($users as $user) {
-  echo $user['name'];
+    echo $user['name'];
 }
 ```
 
